@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import React from 'react';
-import { Ionicons } from '@expo/vector-icons';
-import Animated from 'react-native-reanimated';
-import useCart from '../store/useCart.store';
-import { ICartInProduct } from '../types';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import { Ionicons } from "@expo/vector-icons";
+import Animated from "react-native-reanimated";
+import useCart from "../store/useCart.store";
+import { ICartInProduct } from "../types";
 
 const ConfirmedCard = ({ name, price, image, qty }: ICartInProduct) => {
   const { removeFromConfirmedCart } = useCart();
@@ -16,18 +16,18 @@ const ConfirmedCard = ({ name, price, image, qty }: ICartInProduct) => {
     <Animated.View style={styles.confirmedCardContainer}>
       <Image
         style={styles.confirmedCardImg}
-        resizeMode="cover"
+        resizeMode="contain"
         source={image}
       />
       <View>
         <Text style={styles.confirmedCardText}>
           {name} ({qty})
         </Text>
-        <Text>Rs. {price}</Text>
+        <Text>${price}</Text>
       </View>
       <TouchableOpacity
         style={{
-          marginLeft: 'auto',
+          marginLeft: "auto",
         }}
         onPress={removeItemClickHandle}
       >
@@ -41,10 +41,10 @@ export default ConfirmedCard;
 
 const styles = StyleSheet.create({
   confirmedCardContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     borderBottomWidth: 0.5,
-    borderColor: 'rgba(0,0,0,0.3)',
+    borderColor: "rgba(0,0,0,0.3)",
     paddingRight: 15,
     paddingBottom: 10,
   },
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
   confirmedCardText: {
     fontSize: 16,
-    fontWeight: '500',
+    fontWeight: "500",
     marginBottom: 5,
   },
 });

@@ -22,10 +22,7 @@ const confirmedCart = () => {
   };
 
   const placeCoffeeHandle = () => {
-    ToastAndroid.show(
-      "Your Coffee will be in a minute !!!",
-      ToastAndroid.CENTER
-    );
+    ToastAndroid.show("Your Order will be in a minute...", ToastAndroid.CENTER);
     resetConfirmedCart();
     router.back();
   };
@@ -33,15 +30,24 @@ const confirmedCart = () => {
   if (confirmedCart.length === 0) {
     return (
       <View style={styles.cartNotFoundContainer}>
-        <Text style={styles.cartNotFoundText}>Please Add some Item ...</Text>
+        <Text style={styles.cartNotFoundText}>
+          You didn’t order anything yet.
+        </Text>
         <TouchableOpacity
           onPress={() => {
             if (router.canGoBack()) {
               router.back();
             }
           }}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: 2,
+          }}
         >
-          <Ionicons name="arrow-back" size={32} />
+          <Ionicons name="arrow-back" size={28} />
+          <Text style={{ fontSize: 16, fontWeight: "bold" }}>Order Now</Text>
         </TouchableOpacity>
       </View>
     );
@@ -73,7 +79,7 @@ const confirmedCart = () => {
         }}
       />
       <TouchableOpacity style={styles.placeBtn} onPress={placeCoffeeHandle}>
-        <Text style={styles.placeBtnText}>Place Coffee</Text>
+        <Text style={styles.placeBtnText}>Get Order Ready</Text>
       </TouchableOpacity>
     </Animated.View>
   );
@@ -88,8 +94,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   cartNotFoundText: {
-    fontSize: 16,
-    marginBottom: 10,
+    fontSize: 18,
+    marginBottom: 15,
   },
   listFooterText: {
     fontWeight: "400",
