@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "barista",
+    "description": "Barista is a mobile app that allows you to order coffee from your phone and pick it up at the store.",
     "slug": "barista",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,7 +22,7 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/icon.png"
     },
     "plugins": [
       "expo-router"

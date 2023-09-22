@@ -1,15 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { Ionicons } from "@expo/vector-icons";
 
 interface INumberIcon {
   children: React.ReactNode;
 }
 
-////Loop through each child element and check if there is icon element
 const hasIconElement = (children: React.ReactNode) => {
   let hasIcon = false;
-  React.Children.forEach(children, child => {
+  React.Children.forEach(children, (child) => {
     const element = child as React.ReactElement;
     if (element.type === Ionicons) {
       hasIcon = true;
@@ -23,7 +22,7 @@ const NumberIcon = ({ children }: INumberIcon) => {
     return (
       <View
         style={{
-          position: 'relative',
+          position: "relative",
         }}
       >
         {children}
@@ -31,13 +30,13 @@ const NumberIcon = ({ children }: INumberIcon) => {
     );
   }
 
-  throw new Error('There is no Icon Element from @expo/vector-icons');
+  throw new Error("There is no Icon Element from @expo/vector-icons");
 };
 
 function NumberDisplay({ count }: { count: number }) {
   return (
     <View style={styles.numberDisplayContainer}>
-      <Text style={styles.numberDiplayText}>{count}</Text>
+      <Text style={styles.numberDisplayText}>{count}</Text>
     </View>
   );
 }
@@ -47,18 +46,18 @@ export default NumberIcon;
 
 const styles = StyleSheet.create({
   numberDisplayContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     height: 15,
     width: 15,
     borderRadius: 10,
-    backgroundColor: '#1f1000',
-    position: 'absolute',
+    backgroundColor: "#1f1000",
+    position: "absolute",
     right: -10,
     top: -8,
   },
-  numberDiplayText: {
+  numberDisplayText: {
     fontSize: 10,
-    color: 'white',
+    color: "white",
   },
 });

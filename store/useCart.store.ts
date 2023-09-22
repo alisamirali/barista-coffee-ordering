@@ -1,7 +1,7 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
-import { ICartInProduct, ITeas } from '../types';
-interface Iusecart {
+import { ICartInProduct, ITeas } from "../types";
+interface IUseCart {
   selectedProduct: null | ITeas;
   setActiveSelectedProduct: (product: ITeas) => void;
   removeActiveSelectedProduct: () => void;
@@ -11,45 +11,45 @@ interface Iusecart {
   resetConfirmedCart: () => void;
 }
 
-const useCart = create<Iusecart>(set => {
+const useCart = create<IUseCart>((set) => {
   return {
     selectedProduct: null,
     confirmedCart: [],
-    addToConfirmedCart: product => {
-      set(state => {
+    addToConfirmedCart: (product) => {
+      set((state) => {
         const newState = { ...state };
         newState.confirmedCart.push(product);
         return newState;
       });
     },
 
-    removeFromConfirmedCart: productName => {
-      set(state => {
+    removeFromConfirmedCart: (productName) => {
+      set((state) => {
         const newState = { ...state };
         newState.confirmedCart = newState.confirmedCart.filter(
-          product => product.name !== productName
+          (product) => product.name !== productName
         );
         return newState;
       });
     },
 
     resetConfirmedCart: () => {
-      set(state => {
+      set((state) => {
         const newState = { ...state };
         newState.confirmedCart = [];
         return newState;
       });
     },
 
-    setActiveSelectedProduct: product => {
-      set(state => {
+    setActiveSelectedProduct: (product) => {
+      set((state) => {
         const newState = { ...state };
         newState.selectedProduct = product;
         return newState;
       });
     },
     removeActiveSelectedProduct: () => {
-      set(state => {
+      set((state) => {
         const newState = { ...state };
         newState.selectedProduct = null;
         return newState;

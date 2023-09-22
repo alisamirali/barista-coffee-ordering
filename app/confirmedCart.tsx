@@ -5,13 +5,13 @@ import {
   TouchableOpacity,
   FlatList,
   ToastAndroid,
-} from 'react-native';
-import React from 'react';
-import useCart from '../store/useCart.store';
-import { useRouter } from 'expo-router';
-import ConfirmedCard from '../components/ConfirmedCard';
-import { Ionicons } from '@expo/vector-icons';
-import Animated, { FadeInDown } from 'react-native-reanimated';
+} from "react-native";
+import React from "react";
+import useCart from "../store/useCart.store";
+import { useRouter } from "expo-router";
+import ConfirmedCard from "../components/ConfirmedCard";
+import { Ionicons } from "@expo/vector-icons";
+import Animated, { FadeInDown } from "react-native-reanimated";
 
 const confirmedCart = () => {
   const { confirmedCart, resetConfirmedCart } = useCart();
@@ -23,7 +23,7 @@ const confirmedCart = () => {
 
   const placeCoffeeHandle = () => {
     ToastAndroid.show(
-      'Your Coffee will be in a minute !!!',
+      "Your Coffee will be in a minute !!!",
       ToastAndroid.CENTER
     );
     resetConfirmedCart();
@@ -67,7 +67,7 @@ const confirmedCart = () => {
         ListFooterComponent={() => {
           return (
             <Text style={styles.listFooterText}>
-              Total: Rs. {getTotalAmount()}
+              Total: ${getTotalAmount()}
             </Text>
           );
         }}
@@ -84,28 +84,28 @@ export default confirmedCart;
 const styles = StyleSheet.create({
   cartNotFoundContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   cartNotFoundText: {
     fontSize: 16,
     marginBottom: 10,
   },
   listFooterText: {
-    fontWeight: '400',
+    fontWeight: "400",
     fontSize: 14,
-    textAlign: 'right',
+    textAlign: "right",
     paddingVertical: 10,
     paddingRight: 15,
   },
   placeBtn: {
     padding: 15,
-    backgroundColor: '#1f1000',
+    backgroundColor: "#1f1000",
     margin: 5,
     borderRadius: 5,
   },
   placeBtnText: {
-    color: 'white',
-    textAlign: 'center',
+    color: "white",
+    textAlign: "center",
   },
 });

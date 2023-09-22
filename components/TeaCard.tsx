@@ -1,15 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import { DeviceWidth } from '../constants/Screens';
-import { GestureDetector, Gesture } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { DeviceWidth } from "../constants/Screens";
+import { GestureDetector, Gesture } from "react-native-gesture-handler";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   runOnJS,
   withTiming,
-} from 'react-native-reanimated';
-import useDroppableArea from '../store/useDroppableArea.store';
-import useCart from '../store/useCart.store';
+} from "react-native-reanimated";
+import useDroppableArea from "../store/useDroppableArea.store";
+import useCart from "../store/useCart.store";
 
 interface ITeaCard {
   name: string;
@@ -36,13 +36,10 @@ const TeaCard = ({ name, image, price }: ITeaCard) => {
     };
   });
 
-  ////1.3) - when local state is updated then update global update
   useEffect(() => {
     if (isCupInDroppableArea) {
-      //add to cart
       setActiveSelectedProduct({ name, image, price });
     } else {
-      //remove from cart
       removeActiveSelectedProduct();
     }
     setElementInDropAreaStatus(isCupInDroppableArea);
@@ -50,18 +47,8 @@ const TeaCard = ({ name, image, price }: ITeaCard) => {
 
   const pan = Gesture.Pan()
 
-    .onChange(e => {
+    .onChange((e) => {
       imageYPos.value = e.translationY + EndPosition;
-
-      /*
-      //1) - this global store update code makes animation weired ❌❌❌
-      if (e.absoluteY > droppableZoneYPos) {
-        runOnJS(setElementInDropAreaStatus)(true);
-      } else {
-        runOnJS(setElementInDropAreaStatus)(false);
-      }*/
-
-      //1.1) - to solve above problem - update local state and only update global update function using useEffect
 
       if (e.absoluteY > droppableZoneYPos) {
         runOnJS(setCupInDroppableArea)(true);
@@ -69,7 +56,7 @@ const TeaCard = ({ name, image, price }: ITeaCard) => {
         runOnJS(setCupInDroppableArea)(false);
       }
     })
-    .onFinalize(e => {
+    .onFinalize((e) => {
       if (e.absoluteY > droppableZoneYPos) {
         const finalPosition = droppableZonePlateYPos + droppableZoneYPos - 50;
         imageYPos.value = withTiming(finalPosition, { duration: 200 });
@@ -91,7 +78,7 @@ const TeaCard = ({ name, image, price }: ITeaCard) => {
       </GestureDetector>
 
       <Text style={styles.teaName}>{name}</Text>
-      <Text style={styles.teaPrice}>{price} Rs</Text>
+      <Text style={styles.teaPrice}>${price}</Text>
     </View>
   );
 };
@@ -102,25 +89,26 @@ const styles = StyleSheet.create({
   teaCardContainer: {
     width: DeviceWidth,
     padding: 5,
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
   },
   teaImage: {
-    position: 'relative',
+    position: "relative",
     height: 150,
     width: 150,
     zIndex: 1000,
+    objectFit: "contain",
   },
   teaName: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 30,
     marginTop: 15,
     marginBottom: 10,
-    color: '#1f1000',
+    color: "#1f1000",
     zIndex: 1,
   },
   teaPrice: {
-    fontWeight: '400',
+    fontWeight: "400",
     fontSize: 18,
     zIndex: 1,
   },

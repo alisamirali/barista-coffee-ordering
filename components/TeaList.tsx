@@ -1,46 +1,46 @@
-import React from 'react';
-import TeaCard from './TeaCard';
-import { DeviceWidth } from '../constants/Screens';
-import { FlatList } from 'react-native-gesture-handler';
-import useDroppableArea from '../store/useDroppableArea.store';
+import React from "react";
+import TeaCard from "./TeaCard";
+import { DeviceWidth } from "../constants/Screens";
+import { FlatList } from "react-native-gesture-handler";
+import useDroppableArea from "../store/useDroppableArea.store";
 
-import { ITeas } from '../types';
+import { ITeas } from "../types";
 
 const Teas: ITeas[] = [
   {
-    name: 'Cappuccino',
+    name: "Cappuccino",
     price: 150,
-    image: require('../assets/images/barista/cappuccino.png'),
+    image: require("../assets/images/barista/cappuccino.png"),
   },
   {
-    name: 'Americano',
+    name: "Americano",
     price: 200,
-    image: require('../assets/images/barista/americano.png'),
+    image: require("../assets/images/barista/americano.png"),
   },
   {
-    name: 'Cold Brew',
+    name: "Cold Brew",
     price: 350,
-    image: require('../assets/images/barista/cold-brew.png'),
+    image: require("../assets/images/barista/cold-brew.png"),
   },
   {
-    name: 'Cortado',
+    name: "Cortado",
     price: 150,
-    image: require('../assets/images/barista/cortado.png'),
+    image: require("../assets/images/barista/cortado.png"),
   },
   {
-    name: 'Frappe',
+    name: "Frappe",
     price: 200,
-    image: require('../assets/images/barista/frappe.png'),
+    image: require("../assets/images/barista/frappe.png"),
   },
   {
-    name: 'Macchiato',
+    name: "Macchiato",
     price: 300,
-    image: require('../assets/images/barista/macchiato.png'),
+    image: require("../assets/images/barista/macchiato.png"),
   },
   {
-    name: 'Latte',
+    name: "Latte",
     price: 100,
-    image: require('../assets/images/barista/latte.png'),
+    image: require("../assets/images/barista/latte.png"),
   },
 ];
 
@@ -49,11 +49,10 @@ const TeaList = () => {
 
   return (
     <FlatList
-      //if cup is in the plate do not allow user to scroll horizontally
       scrollEnabled={isElementInDropArea ? false : true}
       snapToInterval={DeviceWidth}
-      decelerationRate={'fast'}
-      snapToAlignment={'center'}
+      decelerationRate={"fast"}
+      snapToAlignment={"center"}
       horizontal
       style={{
         flex: 1,
