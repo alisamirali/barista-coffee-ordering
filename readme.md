@@ -9,3 +9,8 @@
 - typescript
 - expo-router
 - react-native-gesture-handler
+
+### App Demo
+
+https://github.com/alisamirali/barista-coffee-ordering/assets/62913154/86758364-dfab-4f8c-9bfa-c0f4877e4449
+
